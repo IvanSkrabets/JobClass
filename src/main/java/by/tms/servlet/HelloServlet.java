@@ -40,6 +40,6 @@ private final AtomicInteger atomicInteger = new AtomicInteger();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String name = req.getParameter("name");
-       resp.getWriter().println("<h1>Hello" + name + "</h1>");
+       resp.getWriter().println("<h1>Hello"+ name + "</h1>");
     }
 }
