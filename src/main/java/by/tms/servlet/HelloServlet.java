@@ -9,9 +9,8 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 //URI
-@WebServlet(urlPatterns = "/hello")
+@WebServlet(urlPatterns = "/hello",name = "HelloServlet", loadOnStartup = 0)
 public class HelloServlet extends HttpServlet {
-
     // GET POST PUT DELETE
 
 private final AtomicInteger atomicInteger = new AtomicInteger();
@@ -40,6 +39,19 @@ private final AtomicInteger atomicInteger = new AtomicInteger();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        String name = req.getParameter("name");
-       resp.getWriter().println("<h1>Hello"+ name + "</h1>");
+       req.setAttribute("name", name);
+       resp.sendRedirect("/test");
+//       getServletContext().getRequestDispatcher("/test").forward(req,resp);
+      // getServletContext().setAttribute("name", name);
+       // req.getSession().setAttribute("name", name);
+      // resp.getWriter().println("<h1>Hello"+ name + "</h1>");
+
+
+
+
+
     }
+
+
+
 }
